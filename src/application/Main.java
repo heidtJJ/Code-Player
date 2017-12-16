@@ -55,12 +55,6 @@ public class Main extends Application {
 			 */
 			HBox timeBox = new HBox();
 			TextField timeField = new TextField();
-			timeField.textProperty().addListener(new ChangeListener<String>() {
-				@Override
-				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-					timeField.setText(newValue);
-				}
-			});
 
 			Label timeLabel = new Label("Time in months");
 			timeLabel.setId("time-label");
