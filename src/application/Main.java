@@ -18,21 +18,28 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class Main extends Application {
-	public boolean simpleInterest = true;
-	private static final String SimpleInterest = "Simple Interest     ";
 	private static final String CompoundInterest = "Compound Interest     ";
+	private static final String WindowTitle = "Financial Calculator 1.0";
+	private static final String SimpleInterest = "Simple Interest     ";
+	private static final String AppTitle = "Financial Calculator";
+	private static final int AppHeight = 370;
+	private static final int AppWidth = 590;
+
+	public boolean simpleInterest = true;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			primaryStage.setTitle(WindowTitle);
+
 			VBox root = new VBox();
-			Scene scene = new Scene(root, 590, 370);
+			Scene scene = new Scene(root, AppWidth, AppHeight);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			/*
 			 * Title box
 			 */
-			Label titleLabel = new Label(" Financial Calculator 1.0");
+			Label titleLabel = new Label(AppTitle);
 			titleLabel.setId("login-title");
 
 			HBox titleBox = new HBox();
@@ -44,12 +51,11 @@ public class Main extends Application {
 			 */
 			HBox errorBox = new HBox();
 			Label errorField = new Label("");
-			errorBox.setMinHeight(30);
+			errorBox.setMinHeight(15);
 			errorField.setId("error-field");
 			errorBox.getChildren().add(errorField);
-			errorBox.setAlignment(Pos.BOTTOM_LEFT);
-			
-			
+			errorBox.setAlignment(Pos.CENTER);
+
 			/*
 			 * Create text field and label for time
 			 */
@@ -80,8 +86,7 @@ public class Main extends Application {
 			principalLabel.setId("principal-label");
 
 			principalBox.setSpacing(5);
-			principalBox.getChildren().add(principalField);
-			principalBox.getChildren().add(principalLabel);
+			principalBox.getChildren().addAll(principalField, principalLabel);
 			principalBox.setPadding(new Insets(10));
 
 			/*
@@ -129,7 +134,7 @@ public class Main extends Application {
 			TextField calculatedField = new TextField();
 			calculatedField.setId("calculated-amount");
 			calculatedField.setDisable(false);
-			
+
 			calculatedBox.setSpacing(5);
 			calculatedBox.getChildren().add(calculatedLabel);
 			calculatedBox.getChildren().add(calculatedField);
@@ -162,9 +167,7 @@ public class Main extends Application {
 
 			});
 
-			interestTextBox.getChildren().add(curInterestText);
-			interestTextBox.getChildren().add(curInterestRate);
-			interestTextBox.getChildren().add(changeInterestBtn);
+			interestTextBox.getChildren().addAll(curInterestText, curInterestRate, changeInterestBtn);
 			interestTextBox.setPadding(new Insets(10));
 
 			/*
@@ -181,9 +184,9 @@ public class Main extends Application {
 						try {
 							double principal = Double.parseDouble(principalField.getText());
 							double time = Double.parseDouble(timeField.getText());
-							double interestRate = slider.getValue()/100;
-							
-							calculatedField.setText(String.valueOf(principal*(1.0+interestRate*time)));
+							double interestRate = slider.getValue() / 100;
+
+							calculatedField.setText(String.valueOf(principal * (1.0 + interestRate * time)));
 							errorField.setText("");
 
 						} catch (NumberFormatException nfe) {
@@ -193,9 +196,9 @@ public class Main extends Application {
 						try {
 							double principal = Double.parseDouble(principalField.getText());
 							double time = Double.parseDouble(timeField.getText());
-							double interestRate = slider.getValue()/100;
+							double interestRate = slider.getValue() / 100;
 
-							calculatedField.setText(String.valueOf(principal*Math.pow((1.0+interestRate), time)));
+							calculatedField.setText(String.valueOf(principal * Math.pow((1.0 + interestRate), time)));
 							errorField.setText("");
 
 						} catch (NumberFormatException nfe) {
@@ -212,17 +215,11 @@ public class Main extends Application {
 
 			/**
 			 * Space between principal box and slider HBox space2 = new HBox();
-			 * space2.setMinHeight(60);
+			 * 
 			 **/
 
-			root.getChildren().add(titleBox);
-			root.getChildren().add(errorBox);
-			root.getChildren().add(timeBox);
-			root.getChildren().add(principalBox);
-			root.getChildren().add(sliderBox);
-			root.getChildren().add(interestTextBox);
-			root.getChildren().add(calculatedBox);
-			root.getChildren().add(computeBtnBox);
+			root.getChildren().addAll(titleBox, errorBox, timeBox, principalBox, sliderBox, interestTextBox,
+					calculatedBox, computeBtnBox);
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
