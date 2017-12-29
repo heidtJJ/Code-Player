@@ -40,6 +40,6 @@ $("textarea").bind("input propertychange", function() {
 
 $(".io-box").width(($(window).width() / (4 - $(".hidden").length)) - 30 );
 
-$(".io-box").height($(window).height()-$("#top-bar").height()-25);
+$(".io-box").height($(window).height()-$("#top-bar").height()-105);
 
 updateOutput();
