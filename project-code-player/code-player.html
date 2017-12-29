@@ -1,0 +1,72 @@
+<html>
+
+    <head>
+    
+        <title>Code Player</title>
+        
+        <script type="text/javascript" src = "jquery.min.js"></script>
+        
+        <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+
+        <script src="myscripts.js"></script>
+    	<link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+
+        
+        <link rel="stylesheet" type="text/css" href="code-player.css">      
+    
+    </head>
+
+    <body>
+        <div id="top-bar">
+        
+            <div id="logo">CodePlayer</div>
+            
+            <ul id="selection-bar">
+
+                <li class="toggle-box active" id="html">HTML</li>
+                <li class="toggle-box" id="css">CSS</li>
+                <li class="toggle-box" id="javascript">JavaScript</li>
+                <li class="toggle-box active" id="output">Output</li>
+            
+            </ul>
+        
+        </div>
+        
+        <div id="body-collection">    
+        
+            <div id="html-div" class="div-panel">
+             
+                <p>HTML</p>
+                <textarea id="html-panel" class="io-box"><p id="p-tag">Enter your HTML here!</p></textarea>         
+            
+            </div>
+            
+            <div id="css-div" class="hidden div-panel">
+            
+                <p>CSS</p>
+                <textarea id="css-panel" class="io-box">p {color: red;}</textarea>  
+        
+            </div>
+            
+            <div id="javascript-div" class="hidden div-panel">
+              
+                <p>JavaScript</p>
+                <textarea id="javascript-panel" class="io-box">document.getElementById("p-tag").innerHTML = "Hello World!"</textarea>       
+            
+            </div>  
+
+            <div id="output-div" class="div-panel">
+            
+                <p>Output</p>
+                <iframe id="output-panel" class="io-box"></iframe>
+        
+            </div>
+            
+        </div>
+        
+        <script type="text/javascript" src="code-player.js"></script>
+
+        
+    </body>
+    
+</html>
